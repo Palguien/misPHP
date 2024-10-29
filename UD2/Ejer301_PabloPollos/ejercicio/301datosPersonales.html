@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Formulario de datos</title>       
+        <meta charset = "UTF-8">
+        <meta author="Pablo Pollos">
+    </head>
+    <body>   
+        <form action = "301datosPersonales.php" method = "POST" enctype="multipart/form-data">
+            <fieldset>
+                <legend>Identificación</legend>
+                Nombre:<input type="test" id="name" name="name"><br>
+                Primer apellido:<input type="test" id="ape1" name="ape1"><br>
+                Segundo apellido:<input type="test" id="ape2" name="ape2"><hr>
+                Dni:<input class="cl-validate-dni" type="text" name="dni" placeholder="Introduzca su DNI" pattern="[0-9]{8}[A-Za-z]{1}" title="Debe poner 8 números y una letra" minlength="9" maxlength="9" />
+                Fecha de nacimiento:<input type="date" id="nac" name="nac"><br>
+                <label for="sexo" id="sexo">Sexo:</label>
+                <input type="radio" class="radio" value="hombre" name="sexo" />Hombre</label>
+                <input type="radio" class="radio" value="mujer" name="sexo" />Mujer</label>
+                <input type="radio" class="radio" value="indeterminado" name="sexo" checked/>No determinado</label>    
+            </fieldset>   
+            
+            <fieldset>
+                <legend>Datos</legend>
+                <label for="estudios">Estudios:</label>
+                <select id="estudios" name="estudios">
+                    <option value="ESO">ESO</option>
+                    <option value="Bachillerato">Bachillerato</option>
+                    <option value="FP Básica">FP Básica</option>
+                    <option value="FP Grado Medio">FP Grado Medio</option>
+                    <option value="FP Grado Superior">FP Grado Superior</option>
+                    <option value="Universitarios">Universitarios</option>
+                </select><br>
+                <label for="idiomas">Idiomas:</label>
+                <textarea name="idiomas" rows="1" cols="50"></textarea>
+            </fieldset>
+
+            <fieldset>
+                <legend>Documentos adjuntos</legend>
+                Foto: <input type="file" id="foto" name="foto" accept="image/png" max-size="20000"/><br>
+                Currículum: <input type="file" id="curr" name="curr" accept="application/pdf" max-size="20000"/>
+            </fieldset>
+        
+            <input type = "submit">
+        </form>
+    </body>
+</html>
