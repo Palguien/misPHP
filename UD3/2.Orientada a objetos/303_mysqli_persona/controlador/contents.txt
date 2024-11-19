@@ -1,0 +1,7 @@
+agregar
+borrar
+modificar
+
+tabla alumnos
+
+DNI Nombre Apellido Apellido2 Email Teléfono Curso
