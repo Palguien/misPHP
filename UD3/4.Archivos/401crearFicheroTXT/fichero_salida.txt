@@ -1,0 +1,12 @@
+ID:1
+Nombre:Huevón
+ID:2
+Nombre:Wolfram
+ID:3
+Nombre:Indoraptor
+ID:4
+Nombre:Niv-mizzet
+ID:5
+Nombre:Teysa
+ID:56
+Nombre:Rigoberto
