@@ -37,8 +37,7 @@
                 echo "<tr><td>".$persona["id_proyecto"]."</td><td>".$persona["titulo"]."</td><td>".$persona["descripcion"]."</td>";
                 echo "<td>".$persona["periodo"]."</td><td>".$persona["curso"]."</td>";
                 echo "<td>".$persona["fecha_presentacion"]."</td><td>".$persona["nota"]."</td><td>".$persona["pdf"]."</td>";
-                $imagenRecogida = $persona["logotipo"];
-                echo '<td><img src = "data:image/png;base64",'. base64_encode($imagenRecogida) .'" alt="imagen" width="50px" height ="50px"/></td>';
+                echo "<td><img class='logos' src='data:image/png;base64," . base64_encode($persona["logotipo"]) . "' alt='imagen'/></td>";
                 echo '<td><a href="../controlador/eliminar_proyecto.php?id='."$id".'"><button>Borrar</button></a></td>'; 
                 echo '<td><a href="../vista/formulario_modificar_proyecto.php?id='."$id".'"><button>Modificar</button></a></td>';           
             }

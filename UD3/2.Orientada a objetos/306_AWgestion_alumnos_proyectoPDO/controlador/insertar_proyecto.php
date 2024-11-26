@@ -14,7 +14,7 @@
             $fecha_presentacion = $_POST["fecha_presentacion"];
             $nota = $_POST["nota"];
             $pdf = $_POST["pdf"];
-            $logotipo = $_POST["logotipo"];
+            $logotipo = file_get_contents($_FILES["logotipo"]['tmp_name']);
 
             //Prepara lo consulta de insert
             $sql = "insert into proyecto (titulo, descripcion, periodo, curso, fecha_presentacion, nota, pdf, logotipo)
@@ -30,7 +30,7 @@
             $sentencia->bindValue(':fecha_presentacion',$fecha_presentacion,PDO::PARAM_STR);
             $sentencia->bindValue(':nota',$nota,PDO::PARAM_INT);
             $sentencia->bindValue(':pdf',$pdf,PDO::PARAM_STR);
-            $sentencia->bindValue(':logotipo',$logotipo,PDO::PARAM_LOB);
+            $sentencia->bindValue(':logotipo',$logotipo);
             $sentencia->execute();
                 //Todo correcto
                 //Aquí podemos redireccionar a un listado de los datos:
