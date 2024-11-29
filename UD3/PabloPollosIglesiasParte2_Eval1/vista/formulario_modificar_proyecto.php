@@ -8,7 +8,6 @@
         <?php
             $id=$_GET["id"];
             //$id = 3;
-
             include("../config/conexionPDO.php");
 
             //CONSULTA BASE DE DATOS
@@ -16,7 +15,7 @@
             if($conexion==null){
                 echo "Fallo de conexión";
             }else{
-                $sql = "select * from proyecto where id_proyecto = $id";
+                $sql = "select * from tareas where titulo = '$id'";
                 $sentencia = $conexion->query($sql);
                 $sentencia->execute();
                 $listaPersonas=$sentencia->fetchAll(PDO::FETCH_ASSOC);
@@ -29,10 +28,9 @@
                     foreach ($listaPersonas as $persona) {
                         $titulo = $persona["titulo"];
                         $descripcion = $persona["descripcion"];
-                        $periodo = $persona["periodo"];
-                        $curso = $persona["curso"];
-                        $fecha_presentacion = $persona["fecha_presentacion"];
-                        $nota = $persona["nota"];
+                        $prioridad = $persona["prioridad"];
+                        $realizada = $persona["realizada"];
+                        $fecha = $persona["fecha"];
                         //$pdf = $persona["pdf"];
                         //$logotipo = $persona["logotipo"];
                     }
@@ -47,15 +45,12 @@
             }
 
         ?>
-        <form action = "../controlador/modificar_proyecto.php?id=<?php echo $id?>" method = "POST">           
-            Título: <input name = "titulo" type = "text" placeholder="<?php echo $titulo?>"><br>       
+        <form action = "../controlador/modificar_proyecto.php?id=<?php echo $id?>" method = "POST">                 
             Descripción: <input name = "descripcion" type = "text" placeholder="<?php echo $descripcion?>"><br>
-            Período: <input name = "periodo" type = "text" placeholder="<?php echo $periodo?>"><br>
-            Curso: <input name = "curso" type = "text" placeholder="<?php echo $curso?>"><br>
-            Fecha Presentación: <input name = "fecha_presentacion" type = "date" placeholder="<?php echo $fecha_presentacion?>"><br>
-            Nota: <input name = "nota" type = "number" placeholder="<?php echo $nota?>"><br>
-            Pdf: <input name = "pdf" type = "text" type = "file" accept="file/pdf"><br>
-            Logotipo: <input name = "logotipo" type = "file" accept="image/png"><br>
+            Prioridad: <input name = "prioridad" type = "number" max="3" min="1" placeholder="<?php echo $prioridad?>"><br>
+            Realizada: <input name = "realizada" type = "number" max="1" min="0" placeholder="<?php echo $realizada?>"><br>
+            Fecha: <input name = "fecha" type = "date" placeholder="<?php echo $fecha?>"><br>
+            Imagen: <input name = "logotipo" type = "file" accept="image/png"><br>
             <input type = "submit" value="Modificar">
         </form>
     </body>

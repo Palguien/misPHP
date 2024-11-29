@@ -9,27 +9,23 @@
             //Leemos los datos de formulario, por ejemplo: nombre y edad
             $titulo = $_POST["titulo"];
             $descripcion = $_POST["descripcion"];
-            $periodo = $_POST["periodo"];
-            $curso = $_POST["curso"];
-            $fecha_presentacion = $_POST["fecha_presentacion"];
-            $nota = $_POST["nota"];
-            $pdf = file_get_contents($_FILES["pdf"]['tmp_name']);
+            $fecha = $_POST["fecha"];
+            $prioridad = $_POST["prioridad"];
+            $realizada = $_POST["realizada"];
             $logotipo = file_get_contents($_FILES["logotipo"]['tmp_name']);
 
             //Prepara lo consulta de insert
-            $sql = "insert into proyecto (titulo, descripcion, periodo, curso, fecha_presentacion, nota, pdf, logotipo)
-            values (:titulo, :descripcion, :periodo, :curso, :fecha_presentacion, :nota, :pdf, :logotipo)";
+            $sql = "insert into tareas (titulo, descripcion,fecha, prioridad, realizada, img_tarea)
+            values (:titulo, :descripcion, :fecha_presentacion, :nota, :pdf, :logotipo)";
             $sentencia = $conexion->prepare($sql);
 
             //Vinculo la variable al parámetro
             //indicando tipo de valor, s para string, i para int
             $sentencia->bindValue(':titulo',$titulo,PDO::PARAM_STR);
             $sentencia->bindValue(':descripcion',$descripcion,PDO::PARAM_STR);
-            $sentencia->bindValue(':periodo',$periodo,PDO::PARAM_STR);
-            $sentencia->bindValue(':curso',$curso,PDO::PARAM_STR);
-            $sentencia->bindValue(':fecha_presentacion',$fecha_presentacion,PDO::PARAM_STR);
-            $sentencia->bindValue(':nota',$nota,PDO::PARAM_INT);
-            $sentencia->bindValue(':pdf',$pdf);
+            $sentencia->bindValue(':fecha_presentacion',$fecha,PDO::PARAM_STR);
+            $sentencia->bindValue(':nota',$prioridad,PDO::PARAM_INT);
+            $sentencia->bindValue(':pdf',$realizada,PDO::PARAM_INT);
             $sentencia->bindValue(':logotipo',$logotipo);
             $sentencia->execute();
                 //Todo correcto

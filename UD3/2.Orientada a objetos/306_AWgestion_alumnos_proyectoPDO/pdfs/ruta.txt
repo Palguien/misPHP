@@ -1,0 +1,4 @@
+https://localhost/misPHP/UD3/2.Orientada a objetos/306_AWgestion_alumnos_proyectoPDO/pdfs/nombre_pdf.pdf
+
+Nombre pdf proyectos:
+id_proyecto_titulo_nombreAlumno_curso_periodo_fecha.pdf

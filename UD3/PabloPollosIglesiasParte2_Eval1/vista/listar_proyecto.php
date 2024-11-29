@@ -7,10 +7,13 @@
     <title>ALUMNOS</title>
 </head>
 <body>
-    <header><h1>Base de datos de alumnos</h1></header>
+    <header><h1>Base de datos de tareas</h1></header>
 
     <form action = "../vista/formulario_agregar_proyecto.html" method = "POST">           
         <input type="submit" name="" value="Agregar" id="boton1">
+    </form>
+    <form action = "../vista/listar_realizadas.php" method = "POST">           
+        <input type="submit" name="" value="Listar Realizadas" id="boton2">
     </form>
     <?php
     include("../config/conexionPDO.php");
@@ -20,7 +23,7 @@
     if($conexion==null){
         echo "Fallo de conexión";
     }else{
-        $sql = "select * from proyecto";
+        $sql = "select * from tareas";
         $sentencia = $conexion->query($sql);
         $sentencia->execute();
         $listaPersonas=$sentencia->fetchAll(PDO::FETCH_ASSOC);
@@ -31,14 +34,12 @@
         if($numRegistros>0){
             //Recorremos los resultados
             echo '<table border="solid">';
-            echo "<tr><th>ID</th><th>TÍTULO</th><th>DESCRIPCIÓN</th><th>PERÍODO</th><th>CURSO</th><th>FECHA_PRESENTACIÓN</th><th>NOTA</th><th>LOGOTIPO</th><th>PDF</th></tr>";
+            echo "<tr><th>TÍTULO</th><th>DESCRIPCIÓN</th><th>FECHA</th><th>PRIORIDAD</th><th>REALIZADA</th><th>IMAGEN TAREA</th>";
             foreach ($listaPersonas as $persona) {
-                $id = $persona["id_proyecto"];
-                echo "<tr><td>".$persona["id_proyecto"]."</td><td>".$persona["titulo"]."</td><td>".$persona["descripcion"]."</td>";
-                echo "<td>".$persona["periodo"]."</td><td>".$persona["curso"]."</td>";
-                echo "<td>".$persona["fecha_presentacion"]."</td><td>".$persona["nota"]."</td><td>".$persona["pdf"]."</td>";
-                echo "<td><img class='logos' src='data:image/png;base64," . base64_encode($persona["logotipo"]) . "' alt='imagen'/></td>";
-                echo '<td><a href="../controlador/eliminar_proyecto.php?id='."$id".'"><button>Descarga PDF</button>';
+                $id=$persona["titulo"];
+                echo "<tr><td>".$persona["titulo"]."</td><td>".$persona["descripcion"]."</td><td>".$persona["fecha"]."</td>";
+                echo "<td>".$persona["prioridad"]."</td><td>".$persona["realizada"]."</td>";
+                echo "<td><img class='logos' src='data:image/png;base64," . base64_encode($persona["img_tarea"]) . "' alt='imagen' height='100px'/></td>";
                 echo '<td><a href="../controlador/eliminar_proyecto.php?id='."$id".'"><button>Borrar</button></a></td>'; 
                 echo '<td><a href="../vista/formulario_modificar_proyecto.php?id='."$id".'"><button>Modificar</button></a></td>';           
             }
