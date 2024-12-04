@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ALUMNOS</title>
+    <title>PROYECTOS</title>
 </head>
 <body>
-    <header><h1>Base de datos de alumnos</h1></header>
+    <header><h1>Base de datos de proyecto</h1></header>
 
-    <form action = "../vista/formulario_agregar_proyecto.html" method = "POST">           
+    <form action = "../vista/formulario_agregar_proyecto.php" method = "POST">           
         <input type="submit" name="" value="Agregar" id="boton1">
     </form>
     <?php

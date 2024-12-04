@@ -15,6 +15,10 @@
             $nota = $_POST["nota"];
             $pdf = file_get_contents($_FILES["pdf"]['tmp_name']);
             $logotipo = file_get_contents($_FILES["logotipo"]['tmp_name']);
+            $alumno=$_POST["alumno"];
+            $modulo1=$_POST["modulo1"];
+            $modulo2=$_POST["modulo2"];
+            $modulo3=$_POST["modulo3"];
 
             //Prepara lo consulta de insert
             $sql = "insert into proyecto (titulo, descripcion, periodo, curso, fecha_presentacion, nota, pdf, logotipo)
