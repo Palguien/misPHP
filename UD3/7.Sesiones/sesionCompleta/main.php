@@ -6,7 +6,7 @@
     //Y comprobamos que el usuario se haya autentificado
     if(!isset($_SESSION['usuario'])){
         //Si no se ha autenticado, redirigimos al login
-        header("Location: index_.php?loginEnIndex=true");
+        header("Location: index.php?loginEnIndex=true");
     }
 ?>
 <!DOCTYPE html>

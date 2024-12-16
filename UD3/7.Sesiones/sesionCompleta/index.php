@@ -23,10 +23,10 @@
             ?>
             <br>
                 <label for='usuario'>Usuario:</label><br>
-                <input type='text' name='inputUsuario' id='usuario' maxlength="50"/><br>
+                <input type='text' name='user' id='user' maxlength="50"/><br>
 
                 <label for='password'>Contraseña:</label><br>
-                <input type='password' name='inputPassword' id='password' maxlength="50"/><br>
+                <input type='password' name='pass' id='pass maxlength="50"/><br>
             <br>
                 <input type='submit' name='enviar' value="Enviar"/>
         </fieldset>

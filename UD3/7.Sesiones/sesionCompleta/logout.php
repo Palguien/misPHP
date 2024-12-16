@@ -8,5 +8,5 @@ session_unset();
 //La destruimos
 session_destroy();
 
-header("Location: index_.php");
+header("Location: index.php");
 ?>
