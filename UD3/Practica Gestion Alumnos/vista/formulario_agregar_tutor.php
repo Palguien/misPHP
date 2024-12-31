@@ -6,10 +6,10 @@
     </head>
     <body>   
         <form action = "../controlador/insertar_proyecto.php" method = "POST" enctype="multipart/form-data">
-            Título: <input name = "titulo" type = "text"><br>       
-            Descripción: <input name = "descripcion" type = "text"><br>
-            Período: <input name = "periodo" type = "text"><br>
-            Curso: <input name = "curso" type = "text"><br>
+            Usuario: <input name = "titulo" type = "text"><br>       
+            Contraseña: <input name = "descripcion" type = "text"><br>
+            Correo: <input name = "periodo" type = "text"><br>
+            Nombre: <input name = "curso" type = "text"><br>
             Fecha Presentación: <input name = "fecha_presentacion" type = "date"><br>
             Nota: <input name = "nota" type = "number"><br>
             Pdf: <input name = "pdf" type = "file" accept="file/pdf"><br>

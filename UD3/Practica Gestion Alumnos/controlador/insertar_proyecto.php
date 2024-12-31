@@ -16,13 +16,18 @@
             $pdf = file_get_contents($_FILES["pdf"]['tmp_name']);
             $logotipo = file_get_contents($_FILES["logotipo"]['tmp_name']);
             $alumno=$_POST["alumno"];
+            echo $alumno."<br>";
+            $tutor=$_POST["tutor"];
+            echo $tutor."<br>";
             $modulo1=$_POST["modulo1"];
+            echo $modulo1."<br>";
             $modulo2=$_POST["modulo2"];
             $modulo3=$_POST["modulo3"];
+            
 
             //Prepara lo consulta de insert
-            $sql = "insert into proyecto (titulo, descripcion, periodo, curso, fecha_presentacion, nota, pdf, logotipo)
-            values (:titulo, :descripcion, :periodo, :curso, :fecha_presentacion, :nota, :pdf, :logotipo)";
+            $sql = "insert into proyecto (titulo, descripcion, periodo, curso, fecha_presentacion, nota, pdf, logotipo, modulo1, modulo2, modulo3, alumno, tutor)
+            values (:titulo, :descripcion, :periodo, :curso, :fecha_presentacion, :nota, :pdf, :logotipo, :mod1 , :mod2 , :mod3, :alumno, :tutor)";
             $sentencia = $conexion->prepare($sql);
 
             //Vinculo la variable al parámetro
@@ -35,7 +40,13 @@
             $sentencia->bindValue(':nota',$nota,PDO::PARAM_INT);
             $sentencia->bindValue(':pdf',$pdf);
             $sentencia->bindValue(':logotipo',$logotipo);
+            $sentencia->bindValue(':alumno',$titulo,PDO::PARAM_INT);
+            $sentencia->bindValue(':tutor',$titulo,PDO::PARAM_INT);
+            $sentencia->bindValue(':mod1',$titulo,PDO::PARAM_INT);
+            $sentencia->bindValue(':mod2',$titulo,PDO::PARAM_INT);
+            $sentencia->bindValue(':mod3',$titulo,PDO::PARAM_INT);
             $sentencia->execute();
+
                 //Todo correcto
                 //Aquí podemos redireccionar a un listado de los datos:
                 header("Location: ../vista/listar_proyecto.php");

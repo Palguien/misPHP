@@ -22,6 +22,17 @@
     include("../config/conexionPDO.php");
 
     //CONSULTA BASE DE DATOS
+
+    function foranea($tabla,$target,$mod,$conexion){
+        $sql = "select * from $tabla where id_$tabla=$mod";
+        $sentencia = $conexion->query($sql);
+        $sentencia->execute();
+        $modList=$sentencia->fetchAll(PDO::FETCH_ASSOC);
+        foreach ($modList as $mod) {
+            return $mod[$target];
+        } 
+    }
+
     $conexion = conexion(); 
     if($conexion==null){
         echo "Fallo de conexión";
@@ -37,16 +48,19 @@
         if($numRegistros>0){
             //Recorremos los resultados
             echo '<table border="solid">';
-            echo "<tr><th>ID</th><th>TÍTULO</th><th>DESCRIPCIÓN</th><th>PERÍODO</th><th>CURSO</th><th>FECHA_PRESENTACIÓN</th><th>NOTA</th><th>LOGOTIPO</th><th>PDF</th></tr>";
+            echo "<tr><th>ID</th><th>TÍTULO</th><th>DESCRIPCIÓN</th><th>PERÍODO</th><th>CURSO</th><th>FECHA_PRESENTACIÓN</th><th>NOTA</th><th>PDF</th><th>LOGOTIPO</th><th>MODULO 1</th><th>MODULO 2</th><th>MODULO 3</th><th>ALUMNO</th><th>TUTOR</th></tr>";
             foreach ($listaPersonas as $persona) {
                 $id = $persona["id_proyecto"];
                 echo "<tr><td>".$persona["id_proyecto"]."</td><td>".$persona["titulo"]."</td><td>".$persona["descripcion"]."</td>";
                 echo "<td>".$persona["periodo"]."</td><td>".$persona["curso"]."</td>";
                 echo "<td>".$persona["fecha_presentacion"]."</td><td>".$persona["nota"]."</td><td>".$persona["pdf"]."</td>";
                 echo "<td><img class='logos' src='data:image/png;base64," . base64_encode($persona["logotipo"]) . "' alt='imagen'/></td>";
+                echo "<td>".foranea("modulo","siglas",$persona["modulo1"],$conexion)."</td><td>".foranea("modulo","siglas",$persona["modulo2"],$conexion)."</td><td>".foranea("modulo","siglas",$persona["modulo3"],$conexion)."</td>";
+                echo "<td>".foranea("alumnos","DNI",$persona["alumno"],$conexion)."</td><td>".foranea("tutor","login",$persona["tutor"],$conexion)."</td>";
                 echo '<td><a href="../controlador/descarga_pdf.php?id='."$id".'"><button>Descarga PDF</button>';
                 echo '<td><a href="../controlador/eliminar_proyecto.php?id='."$id".'"><button>Borrar</button></a></td>'; 
-                echo '<td><a href="../vista/formulario_modificar_proyecto.php?id='."$id".'"><button>Modificar</button></a></td>';           
+                echo '<td><a href="../vista/formulario_modificar_proyecto.php?id='."$id".'"><button>Modificar</button></a></td>';
+
             }
             echo "</table>";
             
@@ -61,6 +75,8 @@
 
         //cerrar conexión
         $conexion = null;
+
+        
     }
 
 ?>

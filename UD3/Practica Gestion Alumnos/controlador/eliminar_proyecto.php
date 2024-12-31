@@ -15,7 +15,8 @@
             echo "e";
             $num_filas = $sentencia->rowCount();
             echo "$num_filas filas han sido eliminadas<br>";
-            header("Location: ../vista/listar_proyecto.php");            }catch(PDOException $e){
+            header("Location: ../vista/listar_proyecto.php");            
+        }catch(PDOException $e){
             echo $e->getMessage();
         }
         $conexion = null;
