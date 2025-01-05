@@ -4,7 +4,7 @@
     // Y comprobamos que el usuario que se haya autenticado, y que sea administrador
     if(!isset($_SESSION["user"]) || $_SESSION["tipo"]==2){
         // Si no se ha autenticado, redirigimos al login
-        header("Location: index.html");
+        header("Location: ../index.html");
     }
 ?>
 <!DOCTYPE html>
