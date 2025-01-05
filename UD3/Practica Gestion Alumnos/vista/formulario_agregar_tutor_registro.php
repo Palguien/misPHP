@@ -14,7 +14,7 @@
         <meta charset = "UTF-8">
     </head>
     <body>   
-        <form action = "../controlador/insertar_tutor.php" method = "POST" enctype="multipart/form-data">
+        <form action = "../controlador/insertar_tutor_registro.php" method = "POST" enctype="multipart/form-data">
             Usuario: <input name = "login" type = "text"><br>       
             Contraseña: <input name = "password" type = "text"><br>
             Correo: <input name = "correo" type = "email"><br>

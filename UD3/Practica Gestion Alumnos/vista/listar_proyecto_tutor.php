@@ -2,11 +2,12 @@
     // Nos unimos a la sesion
     session_start();
     // Y comprobamos que el usuario que se haya autenticado, y que sea administrador
-    if(!isset($_SESSION["user"]) || $_SESSION["tipo"]==2){
+    if(!isset($_SESSION["user"])){
         // Si no se ha autenticado, redirigimos al login
         header("Location: index.html");
     }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,10 +24,6 @@
 </head>
 <body>
     <header><h1>Base de datos de proyecto</h1></header>
-
-    <form action = "../vista/formulario_agregar_proyecto.php" method = "POST">           
-        <input type="submit" name="" value="Agregar" id="boton1">
-    </form>
     <?php
     include("../config/conexionPDO.php");
 
@@ -46,7 +43,10 @@
     if($conexion==null){
         echo "Fallo de conexión";
     }else{
-        $sql = "select * from proyecto";
+
+        $tutor = $_SESSION["user"];
+
+        $sql = "select * from proyecto where tutor=$tutor";
         $sentencia = $conexion->query($sql);
         $sentencia->execute();
         $listaPersonas=$sentencia->fetchAll(PDO::FETCH_ASSOC);
@@ -67,9 +67,6 @@
                 echo "<td>".foranea("modulo","siglas",$persona["modulo1"],$conexion)."</td><td>".foranea("modulo","siglas",$persona["modulo2"],$conexion)."</td><td>".foranea("modulo","siglas",$persona["modulo3"],$conexion)."</td>";
                 echo "<td>".foranea("alumnos","DNI",$persona["alumno"],$conexion)."</td><td>".foranea("tutor","login",$persona["tutor"],$conexion)."</td>";
                 echo '<td><a href="../controlador/descarga_pdf.php?id='."$id".'"><button>Descarga PDF</button>';
-                echo '<td><a href="../controlador/eliminar_proyecto.php?id='."$id".'"><button>Borrar</button></a></td>'; 
-                echo '<td><a href="../vista/formulario_modificar_proyecto.php?id='."$id".'"><button>Modificar</button></a></td>';
-
             }
             echo "</table>";
             
