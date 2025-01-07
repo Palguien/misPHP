@@ -23,6 +23,7 @@
             <td><a href="vista/listar_tutor.php"><button>Tutores</button></a></td>
             <td><a href="vista/listar_alumnos.php"><button>Alumnos</button></a></td>
             <td><a href="tutor.php"><button>Vista tutor</button></a></td>
+            <td><a href="controlador/cerrar_sesion.php"><button>Cerrar sesión</button></a></td>
         </tr>
     </table>
 

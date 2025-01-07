@@ -22,6 +22,7 @@
     <form action = "../vista/formulario_agregar_tutor.php" method = "POST">           
         <input type="submit" name="" value="Agregar" id="boton1">
     </form>
+    <a href="../controlador/cerrar_sesion.php"><button>Cerrar sesión</button></a>
     <?php
     include("../config/conexionPDO.php");
 

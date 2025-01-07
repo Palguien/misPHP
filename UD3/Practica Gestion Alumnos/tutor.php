@@ -22,6 +22,7 @@
             <td><a href="vista/listar_tutor_tutor.php"><button>Datos</button></a></td>
             <td><a href="vista/listar_alumnos_tutor.php"><button>Alumnos</button></a></td>
             <td><a href="vista/listar_proyecto_tutor.php"><button>Proyectos</button></a></td>
+            <td><a href="controlador/cerrar_sesion.php"><button>Cerrar sesión</button></a></td>
         </tr>
     </table>
 

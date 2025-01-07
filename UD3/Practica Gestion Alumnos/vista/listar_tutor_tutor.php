@@ -18,6 +18,7 @@
 </head>
 <body>
     <header><h1>Datos de tutor</h1></header>
+    <a href="../controlador/cerrar_sesion.php"><button>Cerrar sesión</button></a>
 
     <?php
     include("../config/conexionPDO.php");

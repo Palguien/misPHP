@@ -58,9 +58,9 @@
 
         ?>
         <form action = "../controlador/modificar_alumnos.php?id=<?php echo $id?>" method = "POST">           
-            DNI: <input name = "dni" type = "text" placeholder="<?php echo $dni?>">
-            Nombre: <input name = "nombre" type = "text" placeholder="<?php echo $nombre?>">
-            Apellido1: <input name = "apellido1" type = "text" placeholder="<?php echo $apellido1?>">
+            DNI: <input name = "dni" type = "text" placeholder="<?php echo $dni?>" required>
+            Nombre: <input name = "nombre" type = "text" placeholder="<?php echo $nombre?>" required>
+            Apellido1: <input name = "apellido1" type = "text" placeholder="<?php echo $apellido1?>" required>
             Apellido2: <input name = "apellido2" type = "text" placeholder="<?php echo $apellido2?>">
             Email: <input name = "email" type = "email" placeholder="<?php echo $email?>">
             Teléfono: <input name = "telefono" type = "number" placeholder="<?php echo $telefono?>">

@@ -2,7 +2,7 @@
     // Nos unimos a la sesion
     session_start();
     // Y comprobamos que el usuario que se haya autenticado, y que sea administrador
-    if(!isset($_SESSION["user"]) || $_SESSION["tipo"]==2){
+    if(!isset($_SESSION["user"])){
         // Si no se ha autenticado, redirigimos al login
         header("Location: ../index.html");
     }
@@ -17,10 +17,8 @@
 </head>
 <body>
     <header><h1>Base de datos de alumnos</h1></header>
+    <a href="../controlador/cerrar_sesion.php"><button>Cerrar sesión</button></a>
 
-    <form action = "../vista/formulario_agregar_alumnos.html" method = "POST">           
-        <input type="submit" name="" value="Agregar" id="boton1">
-    </form>
     <?php
     include("../config/conexion.php");
 
@@ -29,7 +27,9 @@
     if($conexion==null){
         echo "Fallo de conexión";
     }else{
-        $consulta = "select * from alumnos";
+        $tutor = $_SESSION["user"];
+
+        $consulta = "select A.* from alumnos A, proyecto P where P.alumno = A.id_alumnos and P.tutor = $tutor";
         $resultado = $conexion->query($consulta);
         $numRegistros=$resultado->num_rows;
 
@@ -44,9 +44,7 @@
                 $id = $persona["id_alumnos"];
                 echo "<tr><td>".$persona["id_alumnos"]."</td><td>".$persona["DNI"]."</td><td>".$persona["nombre"]."</td>";
                 echo "<td>".$persona["apellido1"]."</td><td>".$persona["apellido2"]."</td>";
-                echo "<td>".$persona["email"]."</td><td>".$persona["telefono"]."</td><td>".$persona["curso"]."</td>";
-                echo '<td><a href="../controlador/eliminar_alumnos.php?id='."$id".'"><button>Borrar</button></a></td>'; 
-                echo '<td><a href="../vista/formulario_modificar_alumnos.php?id='."$id".'"><button>Modificar</button></a></td>';           
+                echo "<td>".$persona["email"]."</td><td>".$persona["telefono"]."</td><td>".$persona["curso"]."</td>";        
             }
             echo "</table>";
             

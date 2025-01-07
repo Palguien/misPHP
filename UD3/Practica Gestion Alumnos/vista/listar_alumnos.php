@@ -17,6 +17,7 @@
 </head>
 <body>
     <header><h1>Base de datos de alumnos</h1></header>
+    <a href="../controlador/cerrar_sesion.php"><button>Cerrar sesión</button></a>
 
     <form action = "../vista/formulario_agregar_alumnos.html" method = "POST">           
         <input type="submit" name="" value="Agregar" id="boton1">

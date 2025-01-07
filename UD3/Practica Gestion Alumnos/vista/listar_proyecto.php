@@ -23,10 +23,12 @@
 </head>
 <body>
     <header><h1>Base de datos de proyecto</h1></header>
-
+        
     <form action = "../vista/formulario_agregar_proyecto.php" method = "POST">           
         <input type="submit" name="" value="Agregar" id="boton1">
     </form>
+    <a href="../controlador/cerrar_sesion.php"><button>Cerrar sesión</button></a>
+
     <?php
     include("../config/conexionPDO.php");
 

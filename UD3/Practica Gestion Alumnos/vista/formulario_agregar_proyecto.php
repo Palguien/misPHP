@@ -15,11 +15,11 @@
     </head>
     <body>   
         <form action = "../controlador/insertar_proyecto.php" method = "POST" enctype="multipart/form-data">
-            Título: <input name = "titulo" type = "text"><br>       
+            Título: <input name = "titulo" type = "text" required><br>       
             Descripción: <input name = "descripcion" type = "text"><br>
             Período: <input name = "periodo" type = "text"><br>
             Curso: <input name = "curso" type = "text"><br>
-            Fecha Presentación: <input name = "fecha_presentacion" type = "date"><br>
+            Fecha Presentación: <input name = "fecha_presentacion" type = "date" required><br>
             Nota: <input name = "nota" type = "number"><br>
             Pdf: <input name = "pdf" type = "file" accept="file/pdf"><br>
             Logotipo: <input name = "logotipo" id="logotipo" type = "file" accept="image/png"><br>

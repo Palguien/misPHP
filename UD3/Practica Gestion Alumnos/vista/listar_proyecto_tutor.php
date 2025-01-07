@@ -24,6 +24,8 @@
 </head>
 <body>
     <header><h1>Base de datos de proyecto</h1></header>
+    <a href="../controlador/cerrar_sesion.php"><button>Cerrar sesión</button></a>
+
     <?php
     include("../config/conexionPDO.php");
 
@@ -71,9 +73,6 @@
             echo "</table>";
             
 
-        }else{
-            //error
-            echo "<hr><h1>ERROR</h1><hr>";
         }
 
         //limpiar datos de memoria

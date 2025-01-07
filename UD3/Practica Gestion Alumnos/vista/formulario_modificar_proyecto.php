@@ -55,12 +55,12 @@
             }
 
         ?>
-        <form action = "../controlador/modificar_proyecto.php?id=<?php echo $id?>" method = "POST">           
-            Título: <input name = "titulo" type = "text" placeholder="<?php echo $titulo?>"><br>       
+        <form action = "../controlador/modificar_proyecto.php?id=<?php echo $id?>" method = "POST" enctype="multipart/form-data">           
+            Título: <input name = "titulo" type = "text" placeholder="<?php echo $titulo?>" required><br>       
             Descripción: <input name = "descripcion" type = "text" placeholder="<?php echo $descripcion?>"><br>
             Período: <input name = "periodo" type = "text" placeholder="<?php echo $periodo?>"><br>
             Curso: <input name = "curso" type = "text" placeholder="<?php echo $curso?>"><br>
-            Fecha Presentación: <input name = "fecha_presentacion" type = "date" placeholder="<?php echo $fecha_presentacion?>"><br>
+            Fecha Presentación: <input name = "fecha_presentacion" type = "date" placeholder="<?php echo $fecha_presentacion?>" required><br>
             Nota: <input name = "nota" type = "number" placeholder="<?php echo $nota?>"><br>
             Pdf: <input name = "pdf" type = "file" accept="file/pdf"><br>
             Logotipo: <input name = "logotipo" id="logotipo" type = "file" accept="image/png"><br>
@@ -79,6 +79,11 @@
                 $sentencia->execute();
                 $listaAlumnos=$sentencia->fetchAll(PDO::FETCH_ASSOC);
 
+                $sql = "select * from tutor where activar=1";
+                $sentencia = $conexion->query($sql);
+                $sentencia->execute();
+                $listaTutor=$sentencia->fetchAll(PDO::FETCH_ASSOC);
+
                 $sql = "select * from modulo";
                 $sentencia = $conexion->query($sql);
                 $sentencia->execute();
@@ -91,6 +96,14 @@
             foreach ($listaAlumnos as $alumno){?>
                 <option value=<?=$alumno['id_alumnos']?>>
                     <?=$alumno["nombre"]?>
+                </option>
+            <?php ;}?>
+            </select><br>
+            Tutor:<select name="tutor" id="tutor"]>
+            <?php 
+            foreach ($listaTutor as $tutor){?>
+                <option value=<?=$tutor['id_tutor']?>>
+                    <?=$tutor["login"]?>
                 </option>
             <?php ;}?>
             </select><br>
