@@ -52,9 +52,9 @@
 
         ?>
         <form action = "../controlador/modificar_tutor.php?id=<?php echo $id?>" method = "POST">           
-            Usuario: <input name = "login" type = "text" placeholder="<?php echo $login?>" required><br>       
-            Contraseña: <input name = "password" type = "text" placeholder="<?php echo $password?>" required><br>
-            Correo: <input name = "correo" type = "email" placeholder="<?php echo $correo?>" required><br>
+            Usuario: <input name = "login" type = "text" placeholder="<?php echo $login?>" required>(Debe ser único)<br>       
+            Contraseña: <input name = "password" type = "text" required><br>
+            Correo: <input name = "correo" type = "email" placeholder="<?php echo $correo?>" required>(Debe ser único)<br>
             Nombre: <input name = "nombre" type = "text" placeholder="<?php echo $nombre?>" required><br>
             Apellidos: <input name = "apellidos" type = "text" placeholder="<?php echo $apellidos?>" required><br>
 

@@ -1,5 +1,22 @@
 <?php
     include("../config/conexionPDO.php");
+
+    function unique($tabla,$columna,$valor,$conexion){
+        $sql = "select * from $tabla where $columna='$valor'";
+        echo $sql."<br>";
+        $sentencia = $conexion->query($sql);
+        $sentencia->execute();
+        $sentencia->fetchAll(PDO::FETCH_ASSOC);
+
+        $numRegistros = $sentencia->rowCount();
+        echo $numRegistros."<br>";
+        if($numRegistros>0){
+            return false;
+        }else{
+            return true;
+        }
+
+    }
      //CONSULTA BASE DE DATOS
     $conexion = conexion(); 
     if($conexion==null){
@@ -21,32 +38,35 @@
             $modulo2=$_POST["modulo2"];
             $modulo3=$_POST["modulo3"];
             
+            if(unique("proyecto","titulo",$titulo,$conexion)==false){
+                header("Location: ../vista/formulario_agregar_proyecto.php");
+            }else{
+                //Prepara lo consulta de insert
+                $sql = "insert into proyecto (titulo, descripcion, periodo, curso, fecha_presentacion, nota, pdf, logotipo, modulo1, modulo2, modulo3, alumno, tutor)
+                values (:titulo, :descripcion, :periodo, :curso, :fecha_presentacion, :nota, :pdf, :logotipo, $modulo1 , $modulo2 , $modulo3, $alumno, $tutor)";
+                $sentencia = $conexion->prepare($sql);
 
-            //Prepara lo consulta de insert
-            $sql = "insert into proyecto (titulo, descripcion, periodo, curso, fecha_presentacion, nota, pdf, logotipo, modulo1, modulo2, modulo3, alumno, tutor)
-            values (:titulo, :descripcion, :periodo, :curso, :fecha_presentacion, :nota, :pdf, :logotipo, $modulo1 , $modulo2 , $modulo3, $alumno, $tutor)";
-            $sentencia = $conexion->prepare($sql);
+                //Vinculo la variable al parámetro
+                //indicando tipo de valor, s para string, i para int
+                $sentencia->bindValue(':titulo',$titulo,PDO::PARAM_STR);
+                $sentencia->bindValue(':descripcion',$descripcion,PDO::PARAM_STR);
+                $sentencia->bindValue(':periodo',$periodo,PDO::PARAM_STR);
+                $sentencia->bindValue(':curso',$curso,PDO::PARAM_STR);
+                $sentencia->bindValue(':fecha_presentacion',$fecha_presentacion,PDO::PARAM_STR);
+                $sentencia->bindValue(':nota',$nota,PDO::PARAM_INT);
+                $sentencia->bindValue(':pdf',$pdf);
+                $sentencia->bindValue(':logotipo',$logotipo);
+                //$sentencia->bindValue(':alumno',$titulo,PDO::PARAM_INT);
+                //$sentencia->bindValue(':tutor',$titulo,PDO::PARAM_INT);
+                //$sentencia->bindValue(':mod1',$titulo,PDO::PARAM_INT);
+                //$sentencia->bindValue(':mod2',$titulo,PDO::PARAM_INT);
+                //$sentencia->bindValue(':mod3',$titulo,PDO::PARAM_INT);
+                $sentencia->execute();
 
-            //Vinculo la variable al parámetro
-            //indicando tipo de valor, s para string, i para int
-            $sentencia->bindValue(':titulo',$titulo,PDO::PARAM_STR);
-            $sentencia->bindValue(':descripcion',$descripcion,PDO::PARAM_STR);
-            $sentencia->bindValue(':periodo',$periodo,PDO::PARAM_STR);
-            $sentencia->bindValue(':curso',$curso,PDO::PARAM_STR);
-            $sentencia->bindValue(':fecha_presentacion',$fecha_presentacion,PDO::PARAM_STR);
-            $sentencia->bindValue(':nota',$nota,PDO::PARAM_INT);
-            $sentencia->bindValue(':pdf',$pdf);
-            $sentencia->bindValue(':logotipo',$logotipo);
-            //$sentencia->bindValue(':alumno',$titulo,PDO::PARAM_INT);
-            //$sentencia->bindValue(':tutor',$titulo,PDO::PARAM_INT);
-            //$sentencia->bindValue(':mod1',$titulo,PDO::PARAM_INT);
-            //$sentencia->bindValue(':mod2',$titulo,PDO::PARAM_INT);
-            //$sentencia->bindValue(':mod3',$titulo,PDO::PARAM_INT);
-            $sentencia->execute();
-
-                //Todo correcto
-                //Aquí podemos redireccionar a un listado de los datos:
-                header("Location: ../vista/listar_proyecto.php");
+                    //Todo correcto
+                    //Aquí podemos redireccionar a un listado de los datos:
+                    header("Location: ../vista/listar_proyecto.php");
+            }
         }catch(PDOException $e){
             echo $e->getMessage();
         }

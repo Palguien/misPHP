@@ -56,14 +56,14 @@
 
         ?>
         <form action = "../controlador/modificar_proyecto.php?id=<?php echo $id?>" method = "POST" enctype="multipart/form-data">           
-            Título: <input name = "titulo" type = "text" placeholder="<?php echo $titulo?>" required><br>       
+            Título: <input name = "titulo" type = "text" placeholder="<?php echo $titulo?>" required>(Debe ser único)<br>       
             Descripción: <input name = "descripcion" type = "text" placeholder="<?php echo $descripcion?>"><br>
             Período: <input name = "periodo" type = "text" placeholder="<?php echo $periodo?>"><br>
             Curso: <input name = "curso" type = "text" placeholder="<?php echo $curso?>"><br>
             Fecha Presentación: <input name = "fecha_presentacion" type = "date" placeholder="<?php echo $fecha_presentacion?>" required><br>
             Nota: <input name = "nota" type = "number" placeholder="<?php echo $nota?>"><br>
-            Pdf: <input name = "pdf" type = "file" accept="file/pdf"><br>
-            Logotipo: <input name = "logotipo" id="logotipo" type = "file" accept="image/png"><br>
+            Pdf: <input name = "pdf" type = "file" accept="file/pdf" required><br>
+            Logotipo: <input name = "logotipo" id="logotipo" type = "file" accept="image/png" required><br>
 
             <?php
             //Consulta donde obtengo la lista de los alumnos

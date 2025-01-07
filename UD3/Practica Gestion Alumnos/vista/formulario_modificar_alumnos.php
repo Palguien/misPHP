@@ -58,13 +58,13 @@
 
         ?>
         <form action = "../controlador/modificar_alumnos.php?id=<?php echo $id?>" method = "POST">           
-            DNI: <input name = "dni" type = "text" placeholder="<?php echo $dni?>" required>
-            Nombre: <input name = "nombre" type = "text" placeholder="<?php echo $nombre?>" required>
-            Apellido1: <input name = "apellido1" type = "text" placeholder="<?php echo $apellido1?>" required>
-            Apellido2: <input name = "apellido2" type = "text" placeholder="<?php echo $apellido2?>">
-            Email: <input name = "email" type = "email" placeholder="<?php echo $email?>">
-            Teléfono: <input name = "telefono" type = "number" placeholder="<?php echo $telefono?>">
-            Curso: <input name = "curso" type = "text" placeholder="<?php echo $curso?>">
+            DNI: <input name = "dni" type = "text" placeholder="<?php echo $dni?>" required>(Debe ser único)<br>
+            Nombre: <input name = "nombre" type = "text" placeholder="<?php echo $nombre?>" required><br>
+            Apellido1: <input name = "apellido1" type = "text" placeholder="<?php echo $apellido1?>" required><br>
+            Apellido2: <input name = "apellido2" type = "text" placeholder="<?php echo $apellido2?>"><br>
+            Email: <input name = "email" type = "email" placeholder="<?php echo $email?>">(Debe ser único)<br>
+            Teléfono: <input name = "telefono" type = "number" placeholder="<?php echo $telefono?>">(Debe ser único)<br>
+            Curso: <input name = "curso" type = "text" placeholder="<?php echo $curso?>"><br>
             <input type = "submit" value="Modificar">
         </form>
     </body>
