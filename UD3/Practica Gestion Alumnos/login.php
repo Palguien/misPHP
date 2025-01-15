@@ -29,10 +29,10 @@
                     if(password_verify($clave,$tutor["password"])){
                         if($tipo==1){
                             echo "<hr><h1>ADMIN</h1><hr>";
-                            header("Location: admin.php");
+                            //header("Location: admin.php");
                         }else{
                             echo "<hr><h1>TUTOR</h1><hr>";
-                            header("Location: tutor.php");
+                            //header("Location: tutor.php");
                         }
                     }else{
                         echo "<hr><h1>Contraseña incorrecta</h1><hr>";
