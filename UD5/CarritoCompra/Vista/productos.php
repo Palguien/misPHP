@@ -14,7 +14,7 @@ require_once '../Controlador/controlador.php';
     <ul>
         <?php foreach ($productos as $indice => $producto){ ?>
             <li>
-                <?= $producto -> getNombre() ?> - <?= $producto-> getPrecio() ?>&euro;
+                <?= $producto[0] -> getNombre() ?> - <?= $producto[0]-> getPrecio() ?>&euro;
                 <form action="../Controlador/controlador.php" method="post">
                     <input type= "hidden" name="indice" value="<?= $indice ?>">
                     <input type= "submit" name="agregar" value="Agregar al carrito">

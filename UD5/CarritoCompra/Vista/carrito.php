@@ -12,16 +12,31 @@ require_once '../Controlador/controlador.php';
 </head>
 <body>
     <?php
-    if(empty($_SESSION['carrito'])){
+
+    if(isset($_COOKIE['carrito'])){
+        echo '<p><a href="borrarCookies.php">No guardar carrito</a></p>';
+    }else{
+        echo '<p><a href="GuardarCookies.php"Guardar carrito</a></p>';
+    }
+
+    if($_SESSION['carrito'][0][1]==0 && $_SESSION['carrito'][1][1]==0 && $_SESSION['carrito'][2][1]==0){
+        
         echo "<p>El carrito está vacío</p>";
     }else{
         echo "<h1>Carrito de Productos:</h1>";
         echo "<ul>";
+        $cont=0;
         foreach ($_SESSION['carrito'] as $producto){
-            echo "<li>{$producto->getNombre()} - {$producto->getPrecio()}&euro;</li>";
+            if($producto[1]>0){
+                echo "<li>".$producto[1]." - ".$producto[0]->getNombre()." - ".$producto[0]->getPrecio()."&euro; - ";
+                echo '<a href="eliminar1.php?index='.$cont.'">Eliminar 1</a> - ';
+                echo '<a href="eliminarAll.php?index='.$cont.'">Eliminar todos</a></li>';
+            }
+            $cont++;
         }
         echo "</ul>";
         echo '<p><a href="realizar_pago.php">Comprar</a></p>';
+        echo '<p><a href="vaciar.php">Vaciar carrito</a></p>';
     }   
     ?>    
     <p><a href="productos.php">Volver a la lista de productos</a></p>
