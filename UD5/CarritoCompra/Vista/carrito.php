@@ -14,9 +14,10 @@ require_once '../Controlador/controlador.php';
     <?php
 
     if(isset($_COOKIE['carrito'])){
-        echo '<p><a href="borrarCookies.php">No guardar carrito</a></p>';
+        $_SESSION['carrito'] = json_decode($_COOKIE['carrito']);
+        echo '<p><a href="borrarCookies.php">Borrar cookies</a></p><br>';
     }else{
-        echo '<p><a href="GuardarCookies.php"Guardar carrito</a></p>';
+        setcookie('carrito', json_encode($_SESSION['carrito']), time()+3600*24);
     }
 
     if($_SESSION['carrito'][0][1]==0 && $_SESSION['carrito'][1][1]==0 && $_SESSION['carrito'][2][1]==0){

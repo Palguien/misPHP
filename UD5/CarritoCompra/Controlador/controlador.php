@@ -18,6 +18,7 @@ if($_SERVER['REQUEST_METHOD']=== 'POST' && isset($_POST['agregar'])){
     
 
     $_SESSION['carrito'][$indice][1]++;;
+    setcookie('carrito', json_encode($_SESSION['carrito']), time()+3600*24);
     header('Location: ../Vista/productos.php');
     exit;
 }
