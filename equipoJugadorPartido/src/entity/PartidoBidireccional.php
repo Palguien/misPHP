@@ -5,7 +5,7 @@
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Partido
+ * PartidoBidireccional
  *
  * @ORM\Table(name="partido", indexes={@ORM\Index(name="partido_equipo_FK", columns={"local"}), @ORM\Index(name="partido_equipo_FK_1", columns={"visitante"})})
  * @ORM\Entity
@@ -43,21 +43,21 @@ class Partido
     private $fecha;
 
     /**
-     * @var \Equipo
+     * @var \EquipoBidireccional
      *
-     * @ORM\ManyToOne(targetEntity="Equipo")
+     * @ORM\ManyToOne(targetEntity="EquipoBidireccional", inversedBy = "partidosLocal")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="local", referencedColumnName="id_equipo")
+     *   @ORM\JoinColumn(name="equipo", referencedColumnName="id_equipo")
      * })
      */
     private $local;
 
     /**
-     * @var \Equipo
+     * @var \EquipoBidireccional
      *
-     * @ORM\ManyToOne(targetEntity="Equipo")
+     * @ORM\ManyToOne(targetEntity="EquipoBidireccional", inversedBy = "partidosVisitante")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="visitante", referencedColumnName="id_equipo")
+     *   @ORM\JoinColumn(name="equipo", referencedColumnName="id_equipo")
      * })
      */
     private $visitante;
@@ -163,7 +163,7 @@ class Partido
     /**
      * Get the value of local
      *
-     * @return  \Equipo
+     * @return  \EquipoBidireccional
      */ 
     public function getLocal()
     {
@@ -173,11 +173,11 @@ class Partido
     /**
      * Set the value of local
      *
-     * @param  \Equipo  $local
+     * @param  \EquipoBidireccional  $local
      *
      * @return  self
      */ 
-    public function setLocal(\Equipo $local)
+    public function setLocal(\EquipoBidireccional $local)
     {
         $this->local = $local;
 
@@ -187,7 +187,7 @@ class Partido
     /**
      * Get the value of visitante
      *
-     * @return  \Equipo
+     * @return  \EquipoBidireccional
      */ 
     public function getVisitante()
     {
@@ -197,11 +197,11 @@ class Partido
     /**
      * Set the value of visitante
      *
-     * @param  \Equipo  $visitante
+     * @param  \EquipoBidireccional  $visitante
      *
      * @return  self
      */ 
-    public function setVisitante(\Equipo $visitante)
+    public function setVisitante(\EquipoBidireccional $visitante)
     {
         $this->visitante = $visitante;
 

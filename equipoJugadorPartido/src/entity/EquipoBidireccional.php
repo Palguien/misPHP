@@ -61,10 +61,24 @@ class EquipoBidireccional
      */
     private $jugadores;
 
+    /**
+     * Un equipo tiene muchos partidos "local"
+     * @ORM\OneToMany(targetEntity="PartidoBidireccional",mappedBy="equipo")
+     */
+    private $partidosLocal;
+
+    /**
+     * Un equipo tiene muchos partidos "visitante"
+     * @ORM\OneToMany(targetEntity="PartidoBidireccional",mappedBy="equipo")
+     */
+    private $partidosVisitante;
+
 
     public function __construct()
     {
         $this -> jugadores = new ArrayCollection();
+        $this -> partidosLocal = new ArrayCollection();
+        $this -> partidosVisitante = new ArrayCollection();
     }
     // Getters y setters
 
@@ -214,6 +228,46 @@ class EquipoBidireccional
     public function setJugadores($jugadores)
     {
         $this->jugadores = $jugadores;
+
+        return $this;
+    }
+
+    /**
+     * Get un equipo tiene muchos partidos "local"
+     */ 
+    public function getPartidosLocal()
+    {
+        return $this->partidosLocal;
+    }
+
+    /**
+     * Set un equipo tiene muchos partidos "local"
+     *
+     * @return  self
+     */ 
+    public function setPartidosLocal($partidosLocal)
+    {
+        $this->partidosLocal = $partidosLocal;
+
+        return $this;
+    }
+
+    /**
+     * Get un equipo tiene muchos partidos "visitante"
+     */ 
+    public function getPartidosVisitante()
+    {
+        return $this->partidosVisitante;
+    }
+
+    /**
+     * Set un equipo tiene muchos partidos "visitante"
+     *
+     * @return  self
+     */ 
+    public function setPartidosVisitante($partidosVisitante)
+    {
+        $this->partidosVisitante = $partidosVisitante;
 
         return $this;
     }
