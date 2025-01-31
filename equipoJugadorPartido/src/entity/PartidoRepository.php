@@ -15,8 +15,8 @@ protected EntityManager $entityManager;
         //Consulta que devuelve una colección con los jugadores del equipo,
         //-1 si no encuentra el equipo.
 
-        $consulta =$this -> entityManager->createQuery("SELECT p FROM Jugador j JOIN Equipo e WHERE p.id_partido = :id");
-        $consulta->setParameter('id', $id); //evitar injección
+        $consulta =$this -> entityManager->createQuery("select * from partido where id_partido=1;");
+        //$consulta->setParameter('id', $id); //evitar injección
         $resultado = $consulta->getResult();
 
         if ($resultado == []){

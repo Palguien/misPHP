@@ -1,9 +1,6 @@
 <?php
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\EntityManager;
-//require_once "..\..\bootstrap.php";
-//require_once 'Jugador.php';
-//require_once 'Equipo.php';
 
 class EquipoRepository extends \Doctrine\ORM\EntityRepository{
 
