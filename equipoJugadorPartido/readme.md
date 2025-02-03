@@ -66,3 +66,5 @@ Test: probarPartidoBidireccional.php
 
 
 ## 5 - Añade un repositorio con 3 consultas que inventes (por ejemplo, que devuelva todos los partidos en los que el equipo x jugó como visitante). Escribe un programa para probarlas (probar-partido.php).
+
+Test: repositoriosPartido.php

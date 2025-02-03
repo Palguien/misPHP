@@ -7,6 +7,8 @@ require_once 'src/entity/Equipo.php';
 if(isset($_GET['id'])){
 	$id = $_GET['id'];
 
+	echo $id;
+
 	// buscar por clave primaria
 	$part = $entityManager->find("Partido", $id);
 	if(!$part){

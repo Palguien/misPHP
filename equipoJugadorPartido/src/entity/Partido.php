@@ -1,14 +1,13 @@
 <?php
 
 
-
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Partido
  *
  * @ORM\Table(name="partido", indexes={@ORM\Index(name="partido_equipo_FK", columns={"local"}), @ORM\Index(name="partido_equipo_FK_1", columns={"visitante"})})
- * @ORM\Entity(repositoryClass="EquipoRepository")
+ * @ORM\Entity(repositoryClass="PartidoRepository")
  */
 class Partido
 {

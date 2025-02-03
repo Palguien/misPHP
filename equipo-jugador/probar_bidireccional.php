@@ -2,6 +2,9 @@
 require_once "bootstrap.php";
 require_once './src/entity/EquipoBidireccional.php';
 require_once './src/entity/JugadorBidireccional.php';
+
+
+
 $id = $_POST['id'];
 /*buscar el jugador con el id indicado*/
 $equipo = $entityManager->find("EquipoBidireccional", $id);
