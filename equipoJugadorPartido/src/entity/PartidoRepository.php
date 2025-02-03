@@ -53,25 +53,7 @@ protected EntityManager $entityManager;
         }else{
             return $resultado;
         }
-    }
-
-
-    public function getLista($nombre_equipo){
-        
-        //Consulta que devuelve una colección con los jugadores del equipo,
-        //-1 si no encuentra el equipo.
-
-        $consulta =$this -> entityManager->createQuery("SELECT j FROM Jugador j JOIN Equipo e WHERE e.nombre = :equipo and j.equipo = p.idEquipo");
-        $consulta->setParameter('equipo', $nombre_equipo); //evitar injección
-        $resultado = $consulta->getResult();
-
-        if ($resultado == []){
-            return -1;
-        }else{
-            return $resultado;
-        }
-    }
-    
+    }    
 
 }
 ?>

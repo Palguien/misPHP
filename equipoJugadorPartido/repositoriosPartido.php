@@ -7,19 +7,6 @@ require_once './src/entity/Partido.php';
 require_once './src/entity/PartidoRepository.php';
 /*usar el repositorio*/
 
-// Jugadores de un equipo
-$jugadores = $entityManager->getRepository('Partido')->getLista("Raimon");
-
-if($jugadores === -1)
-{
-	echo "Equipo no encontrado<br>";
-	}else
-	{
-		foreach($jugadores as $jugador)
-		{
-			echo "Nombre: ". $jugador->getNombre(). " ". $jugador->getApellidos(). "<br>";
-		}
-}
 echo "-------Partidos de un equipo-------<br>";
 // Partidos de un equipo
 $partidos = $entityManager->getRepository('Partido')->getListaPartido("Raimon");
