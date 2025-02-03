@@ -17,21 +17,30 @@ if(!$equipo)
 	echo "Fundación del equipo: ".$equipo->getFundacion()."<br>";
 	echo "Socios del equipo: ". $equipo->getSocios()."<br>";
 	echo "Ciudad del equipo: ". $equipo->getCiudad()."<br>";
-	$partidosLocal = $equipo->getPartidosLocal();
+	$jugadores = $equipo->getJugadores();
+	echo " ----Lista jugadores ------------------<br>";
+	foreach($jugadores as $jugador){
+		echo "Nombre del jugador: ". $jugador->getNombre()."<br>";
+		echo "Apellidos del jugador: ". $jugador->getApellidos()."<br>";
+		echo "Edad del jugador: ". $jugador->getEdad()."<br>";
+		echo " ----------------------<br>";
+		$equipo = $jugador->getEquipo();
+		
+	}
+	$partidos = $equipo->getPartidosLocal();
 	echo "<br> ----Lista partidos como local ------------------";
-	foreach($partidosLocal as $part){
+	foreach($partidos as $part){
 		echo "<br> Visitante:";
 		echo $part->getVisitante()->getNombre();
 		echo "<br> Goles:";
 		echo $part->getGolesLocal()." - ".$part->getGolesVisitante();
 	}
-	$partidosLocal = $equipo->getPartidosVisitante();
+	$partidos = $equipo->getPartidosVisitante();
 	echo "<br> ----Lista partidos como visitante ------------------";
-	foreach($partidosLocal as $part){
+	foreach($partidos as $part){
 		echo "<br> Local:";
 		echo $part->getLocal()->getNombre();
 		echo "<br> Goles:";
 		echo $part->getGolesLocal()." - ".$part->getGolesVisitante();
-		
 	}
 }

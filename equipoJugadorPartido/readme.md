@@ -20,13 +20,13 @@ En EquipoBidireccional hay que crear dos atributos $partidosLocal y $partidosVis
 
     /**
      * Un equipo tiene muchos partidos "local"
-     * @ORM\OneToMany(targetEntity="PartidoBidireccional",mappedBy="equipo")
+     * @ORM\OneToMany(targetEntity="PartidoBidireccional",mappedBy="local")
      */
     private $partidosLocal;
 
     /**
      * Un equipo tiene muchos partidos "visitante"
-     * @ORM\OneToMany(targetEntity="PartidoBidireccional",mappedBy="equipo")
+     * @ORM\OneToMany(targetEntity="PartidoBidireccional",mappedBy="visitante")
      */
     private $partidosVisitante;
 
@@ -45,7 +45,7 @@ En PartidoBidireccional $local y $visitantes invierten $partidosLocal y $partido
      *
      * @ORM\ManyToOne(targetEntity="EquipoBidireccional", inversedBy = "partidosLocal")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="equipo", referencedColumnName="id_equipo")
+     *   @ORM\JoinColumn(name="local", referencedColumnName="id_equipo")
      * })
      */
     private $local;
@@ -55,12 +55,15 @@ En PartidoBidireccional $local y $visitantes invierten $partidosLocal y $partido
      *
      * @ORM\ManyToOne(targetEntity="EquipoBidireccional", inversedBy = "partidosVisitante")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="equipo", referencedColumnName="id_equipo")
+     *   @ORM\JoinColumn(name="visitante", referencedColumnName="id_equipo")
      * })
      */
     private $visitante;
 
+En ambos casos, debido a que hay dos relaciones iguales, el nombre de la primera será "local" y la otra "visitante" para evitar conflictos.
+
 Además hay que cambiar las instancias de Partido por PartidoBidireccional.
+
 
 Test: probarPartidoBidireccional.php
 

@@ -1,5 +1,6 @@
 <?php
 
+
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -63,13 +64,13 @@ class EquipoBidireccional
 
     /**
      * Un equipo tiene muchos partidos "local"
-     * @ORM\OneToMany(targetEntity="PartidoBidireccional",mappedBy="equipo")
+     * @ORM\OneToMany(targetEntity="PartidoBidireccional",mappedBy="local")
      */
     private $partidosLocal;
 
     /**
      * Un equipo tiene muchos partidos "visitante"
-     * @ORM\OneToMany(targetEntity="PartidoBidireccional",mappedBy="equipo")
+     * @ORM\OneToMany(targetEntity="PartidoBidireccional",mappedBy="visitante")
      */
     private $partidosVisitante;
 

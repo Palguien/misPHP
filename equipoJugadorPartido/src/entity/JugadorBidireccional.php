@@ -43,7 +43,7 @@ class JugadorBidireccional
     private $edad;
 
     /**
-     * @var \Equipo
+     * @var \EquipoBidireccional
      *
      * @ORM\ManyToOne(targetEntity="EquipoBidireccional", inversedBy = "jugadores")
      * @ORM\JoinColumns({
