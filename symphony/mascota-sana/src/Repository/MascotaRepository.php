@@ -40,4 +40,18 @@ class MascotaRepository extends ServiceEntityRepository
     //            ->getOneOrNullResult()
     //        ;
     //    }
+
+    /**
+     * @return Mascota[] Returns an array of Mascota objects
+    */
+    public function mascotaL(): array
+        {
+            return $this->createQueryBuilder('m')
+                ->andWhere('m.nombre like :value1 or m.nombre like :value2')
+                ->setParameter('value1', 'L%')
+                ->setParameter('value2', 'l%')
+                ->getQuery()
+                ->getResult()
+            ;
+        }
 }

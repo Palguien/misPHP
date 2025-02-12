@@ -19,6 +19,7 @@ final class MascotaController extends AbstractController
     {
         return $this->render('mascota/index.html.twig', [
             'mascotas' => $mascotaRepository->findAll(),
+            'mascotasL' => $mascotaRepository->mascotaL()
         ]);
     }
 
