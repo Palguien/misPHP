@@ -1,0 +1,18 @@
+{
+    "name": "pablo.poligl.1/darticulos-pablopi",
+    "autoload": {
+        "psr-4": {
+            "PabloPoligl1\\DarticulosPablopi\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Pablo Pollos",
+            "email": "pablo.poligl.1@educa.jcyl.es"
+        }
+    ],
+    "require": {
+        "doctrine/cache": "^2.2",
+        "doctrine/annotations": "^2.0"
+    }
+}
